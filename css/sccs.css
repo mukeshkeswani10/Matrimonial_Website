@@ -1,0 +1,214 @@
+$blue: #225687;
+@mixin heading() {
+    font-size: 3rem;
+    text-align: center;
+    color: #333;
+    margin: 3rem 0;
+    padding-top: 6rem;
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        height: .3rem;
+        width: 5rem;
+        background: #333;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    font-family: 'Exo 2', sans-serif;
+    transition: all .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0 .1rem .5rem rgba(51, 51, 51, .5);
+    a {
+        font-size: 2rem;
+        text-decoration: none;
+        color: #333;
+    }
+    .fa-bars {
+        font-size: 3rem;
+        color: #333;
+        cursor: pointer;
+        display: none;
+    }
+    .logo {
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+    .navbar {
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            li {
+                margin: 0 1.5rem;
+                a {
+                    &:hover {
+                        padding-bottom: .3rem;
+                        border-bottom: .2rem solid $blue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//contact section
+.contact {
+    min-height: 90vh;
+    .heading {
+        @include heading();
+    }
+    .inputBox {
+        padding: 0 1rem;
+        .name,
+        .email,
+        textarea {
+            height: 3rem;
+            width: 100%;
+            background: none;
+            border: none;
+            outline: none;
+            border-bottom: .1rem solid #333;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-size: 1.8rem;
+            &:focus {
+                border-bottom: .2rem solid $blue;
+            }
+        }
+        .name {
+            width: 45%;
+        }
+        textarea {
+            height: 20rem;
+            border: .1rem solid #333;
+            resize: none;
+            &:focus {
+                border: .2rem solid $blue;
+            }
+        }
+    }
+    .name-box {
+        display: flex;
+        justify-content: space-between;
+    }
+    input[type="submit"] {
+        height: 4rem;
+        width: 12rem;
+        background: #333;
+        color: #fff;
+        font-size: 1.7rem;
+        margin-left: 1rem;
+        margin-bottom: 3rem;
+        outline: none;
+        border: none;
+        &:hover {
+            background: $blue;
+            box-shadow: 0 .5rem 1rem rgba(51, 51, 51, .3);
+        }
+    }
+    .info {
+        .info-box {
+            margin: 4.5rem 1rem;
+            h2 {
+                font-size: 2rem;
+                color: $blue;
+                i {
+                    padding: 0 1rem;
+                    color: #333;
+                }
+            }
+            p {
+                font-size: 1.8rem;
+                color: #666;
+                padding-left: 3.5rem;
+            }
+        }
+    }
+}
+
+#footer {
+    background: #f9f9f9;
+    padding: 1.5rem 0;
+    border-top: .1rem solid rgba(51, 51, 51, .3);
+    h1 {
+        color: #333;
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: bolder;
+        margin-bottom: 0;
+        letter-spacing: .1rem;
+        span {
+            color: $blue;
+        }
+    }
+}
+
+//media queries
+@media (max-width:768px) {
+    html {
+        font-size: 55%;
+    }
+    .home {
+        background-position: center;
+    }
+    .header {
+        .fa-bars {
+            display: block;
+        }
+        .navbar {
+            position: fixed;
+            top: -120%;
+            left: 0;
+            height: calc(100vh - 5.2rem);
+            width: 100vw;
+            background: #fff;
+            border-top: .1rem solid rgba(51, 51, 51, .3);
+            ul {
+                height: 100%;
+                width: 100%;
+                flex-flow: column;
+                justify-content: center;
+                li {
+                    margin: 1.5rem 0;
+                    a {
+                        font-size: 2.5rem;
+                    }
+                }
+            }
+        }
+        .nav-toggle {
+            top: 5rem;
+        }
+    }
+}
